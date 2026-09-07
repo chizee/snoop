@@ -453,7 +453,7 @@ def r_results(request_future, error_type, websites_names, timeout=None, norm=Fal
         res = request_future.result(timeout=timeout + 10)
 # Перехват текстовой ошибки из воркера
         if isinstance(res, str) and res.startswith("NET_ERROR:"):
-            raise requests.exceptions.ConnectionError(f"({res.split(":")[1]})")
+            raise requests.exceptions.ConnectionError(f"({res.split(':')[1]})")
         if res.status_code:
             return res, error_type, str(round(res.elapsed.total_seconds(), 2))
     except requests.exceptions.HTTPError as err1:

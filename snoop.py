@@ -520,13 +520,13 @@ def sreports(url, headers, error_type, username, websites_names, r):
 # Сохранять отчеты для метода: redirection.
     if error_type == "redirection":
         try:
-            response, session_size = new_session(url, headers, error_type,
-                                                 username, websites_names, r, t=6)
+            response, session_size = new_session(url=url, headers=headers, error_type=error_type,
+                                                 username=username, websites_names=websites_names, r=r, t=6)
         except requests.exceptions.ConnectionError:
             time.sleep(0.02)
             try:
-                response, session_size = new_session(url, headers, error_type, username,
-                                                     websites_names, r, headers="", t=3)
+                response, session_size = new_session(url=url, headers='', error_type=error_type,
+                                                     username=username, websites_names=websites_names, r=r, t=3)
             except Exception:
                 session_size = 'Err' #подсчет извлеченных данных
         except Exception:
